@@ -4,7 +4,7 @@ export default function Settings() {
     return (
     <div>
         <TopBar />
-        <div>
+        <div className="container">
             
         </div>
     </div>

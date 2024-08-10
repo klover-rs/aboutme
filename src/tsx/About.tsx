@@ -5,7 +5,8 @@ export default function About() {
     return (
     <div>
         <TopBar />
-        <div>
+        <div className="container">
+            <h1>Hssssssssssssssssssss</h1>
         </div>
     </div>
     )

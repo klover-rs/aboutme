@@ -6,7 +6,7 @@ export default function MySaviour() {
     return (
     <div>
         <TopBar />
-        <div></div>
+        <div className="container"></div>
     </div>
     );
 }

@@ -3,3 +3,7 @@ body {
     height: 100vh;
     margin: 0; 
 }
+
+.container {
+    margin-top: 55px;
+}

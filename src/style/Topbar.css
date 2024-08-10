@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     backdrop-filter: blur(20px);
+    height: 55px;
 }
 
 .current-page-header-container {

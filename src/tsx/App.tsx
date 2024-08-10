@@ -6,13 +6,10 @@ import NavBar from './Navbar';
 function App() {
   return (
   <div>
-    
-    <div className="App">
-      <TopBar/>
+    <TopBar/>
+    <div className="container">
       
-      <header className="App-header">
-        
-      </header>
+      
     </div>
   </div>
   );
