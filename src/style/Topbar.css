@@ -1,0 +1,21 @@
+.topbar {
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.25);
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(20px);
+}
+
+.current-page-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.current-page-header-container-inner {
+    text-align: center;
+    margin-right: 8vh;
+}
