@@ -2,10 +2,14 @@
 import { useState } from 'react';
 import '../style/Topbar.css';
 import NavBar from './Navbar';
+import { useLocation } from 'react-router-dom';
 
 export default function TopBar() {
 
     const [elapse, setElapse] = useState(false);
+    const location = useLocation();
+
+    const pageName = location.pathname.split('/').filter(Boolean).pop() || 'home';
 
     const handleButtonClick = () => {
         setElapse(prevElapse => !prevElapse);
@@ -32,7 +36,7 @@ export default function TopBar() {
             </div>
             <div className="current-page-header-container">
                 <div className='current-page-header-container-inner'>
-                    <h3>current page</h3>
+                    <h3>{pageName}</h3>
                 </div>
             </div>
             
