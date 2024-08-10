@@ -5,13 +5,23 @@ import '../style/Navbar.css'
 export default function NavBar() {
     return (
         <div className="navbar">
-            <Link to="/">Home</Link>
-            <br/>
-            <Link to="/about">About</Link>
-            <br/>
-            <Link to="/mysaviour">My Saviour</Link>
-            <br/>
-            <Link to="/settings">Settings</Link>
+            <div className="navbar-inner">
+                <div className="navbar-link">
+                    <div className="navbar-link-inner"><Link to="/">Home</Link></div>
+                </div>
+                <br/>
+                <div className="navbar-link">
+                    <div className="navbar-link-inner"><Link to="/about">About</Link></div>
+                </div>
+                <br/>
+                <div className="navbar-link">
+                    <div className="navbar-link-inner"><Link to="/mysaviour">My Saviour</Link></div>
+                </div>
+                <br/>
+                <div className="navbar-link">
+                    <div className="navbar-link-inner"><Link to="/settings">Settings</Link></div>
+                </div>
+            </div>
         </div>
     )
 }
