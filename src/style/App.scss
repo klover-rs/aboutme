@@ -2,29 +2,29 @@
 
 
 body {
-    background-color: $background-color-primary;
+    background-color: var(--background-color-primary);
     height: 100vh;
     margin: 0; 
 }
 
 h3 {
-    color: $primary-text-color;
+    color: var(--primary-text-color);
 }
 h2 {
-    color: $primary-text-color;
+    color: var(--primary-text-color);
 }
 h1 {
-    color: $primary-text-color;
+    color: var(--primary-text-color);
 }
 p {
-    color: $primary-text-color;
+    color: var(--primary-text-color);
 }
 label {
-    color: $primary-text-color;
+    color: var(--primary-text-color);
 }
 
 details {
-    color: $primary-text-color;
+    color: var(--primary-text-color);
 }
 
 .container {

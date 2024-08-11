@@ -2,11 +2,11 @@
 
 .navbar {
     width: 250px;
-    background-color: rgba(255, 255, 255, $transparency);
+    background-color: rgba(255, 255, 255, var(--transparency));
     position: fixed;
     height: 100vh;
-    backdrop-filter: blur($transparency-blur);
-    border-right: 1px solid rgba(255, 255, 255, $transparency + 0.25)
+    backdrop-filter: blur(var(--transparency-blur));
+    border-right: 1px solid rgba(255, 255, 255, calc(var(--transparency) + 0.25));
 }
 
 .navbar-inner {
@@ -26,6 +26,6 @@
 
 .navbar-link-inner a {
     text-decoration: none;
-    color: $primary-text-color;
-    filter: drop-shadow(5px 5px 20px $primary-text-color);
+    color: var(--primary-text-color);
+    filter: drop-shadow(5px 5px 20px var(--primary-text-color));
 }

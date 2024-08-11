@@ -49,7 +49,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: $secondary-grey;
+    background-color: var(--secondary-grey);
     transition: .3s;
     border-radius: 30px;
 }
@@ -76,11 +76,11 @@
 }
 
 .transparency-effects-toggle-slider-card > .slider-card-front {
-    background-color: $primary-grey;
+    background-color: var(--primary-grey);
 }
 
 input:checked ~ .transparency-effects-toggle-slider-card > .slider-card-back {
-    background-color: $primary-color;
+    background-color: var(--primary-color);
 }
 
 input:checked ~ .transparency-effects-toggle-slider-card {
@@ -88,7 +88,7 @@ input:checked ~ .transparency-effects-toggle-slider-card {
 }
 
 input:checked ~ .transparency-effects-toggle-slider {
-    background-color: $secondary-color;
+    background-color: var(--secondary-color);
 }
 
 .transparency-effects-toggle-container {
