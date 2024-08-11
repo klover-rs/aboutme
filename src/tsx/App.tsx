@@ -7,8 +7,8 @@ function App() {
   <div>
     <TopBar/>
     <div className="container">
-      <div id='gay'></div>
-      
+      <h1>Nothing to see here :)</h1>
+      <p>come back sooner or later as this page is in active development</p>  
     </div>
   </div>
   );
