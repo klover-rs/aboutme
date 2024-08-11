@@ -16,14 +16,19 @@
     width: 100%;
 }
 
-.current-page-header-container-inner {
-    text-align: center;
-    margin-right: 8vh;
-}
 
 .navbar-container {
     position: relative;
     z-index: 1; 
     top: 0;
+    
 
+}
+
+.open-navbar-container {
+    position: fixed;
+}
+
+.open-navbar-btn {
+    text-align: center;
 }

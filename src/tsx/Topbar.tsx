@@ -32,7 +32,7 @@ export default function TopBar() {
         </div>
         <div className="topbar">
             <div className="open-navbar-container">
-                <button onClick={handleButtonClick}>{elapse ? 'Close Navbar' : 'Open Navbar'}</button>
+                <button className='open-navbar-btn' onClick={handleButtonClick}>{elapse ? 'Close Navbar' : 'Open Navbar'}</button>
             </div>
             <div className="current-page-header-container">
                 <div className='current-page-header-container-inner'>
