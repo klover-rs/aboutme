@@ -4,6 +4,7 @@
     position: fixed;
     height: 100vh;
     backdrop-filter: blur(11px);
+    border-right: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .navbar-inner {
@@ -21,3 +22,8 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.navbar-link-inner a {
+    text-decoration: none;
+    color: white;
+    filter: drop-shadow(5px 5px 20px rgb(255, 255, 255));
+}

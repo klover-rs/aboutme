@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import '../style/Topbar.css';
+import '../style/Topbar.scss';
 import NavBar from './Navbar';
 import { useLocation } from 'react-router-dom';
 
