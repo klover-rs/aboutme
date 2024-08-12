@@ -1,16 +1,16 @@
 {
-    "primary-color-text": "#ffffff",
-    "primary-color": "#2d2ddd",
-    "secondary-color": "#84b2e6",
-    "background-color-primary": "#08086b",
-    "background-color-secondary": "#0b0b81",
+    "primary_color_text": "#ffffff",
+    "primary_color": "#2d2ddd",
+    "secondary_color": "#84b2e6",
+    "background_color_primary": "#08086b",
+    "background_color_secondary": "#3b3bff",
 
-    "primary-grey": "#757575",
-    "secondary-grey": "#d1d0d0",
+    "primary_grey": "#757575",
+    "secondary_grey": "#d1d0d0",
 
-    "font-size": "16px",
+    "font_size": "16px",
 
     "transparency": true,
-    "transparency-value": 0.25,
-    "transparency-blur": "12px"
+    "transparency_value": 0.25,
+    "transparency_blur": "12px"
 }

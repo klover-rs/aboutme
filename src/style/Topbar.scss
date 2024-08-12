@@ -1,17 +1,30 @@
 @import 'variables';
 
 .topbar {
-    top: 0;
-    background-color: rgba(255, 255, 255, var(--transparency));
     position: fixed;
+    top: 0;
     width: 100%;
     display: flex;
     align-items: center;
     backdrop-filter: blur(var(--transparency-blur));
     height: 55px;
     border-bottom: 1px solid rgba(255, 255, 255, calc(var(--transparency) + 0.25));
+    z-index: 1;
+    overflow: hidden; 
 }
 
+.topbar::before {
+    content: ''; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-color-secondary);
+    opacity: var(--transparency); 
+    z-index: -1; 
+  
+}
 .current-page-header-container {
     display: flex;
     justify-content: center;

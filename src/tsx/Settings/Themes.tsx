@@ -1,8 +1,39 @@
 import { Link } from "react-router-dom";
 import TopBar from "../Topbar";
 import '../../style/Settings/Themes.scss';
+import { useEffect, useState } from "react";
+
+
+import { Style } from '../../Router';
 
 export default function SettingsThemes() {
+
+    const [jsonTheme, setJsonTheme] = useState<Style | null>(null); 
+    const [isTransparencyEnabled, setIsTransparencyEnabled] = useState<boolean>(false);
+    
+    useEffect(() => {
+        const storage = localStorage.getItem("theme");
+
+        if (storage) {
+            const jsonTheme_: Style = JSON.parse(storage);
+
+            setJsonTheme(jsonTheme_);
+            
+            setIsTransparencyEnabled(jsonTheme_.transparency);
+        }
+    }, []);
+
+    
+    const handleToggleTransparency = () => {
+        setIsTransparencyEnabled((prev) => !prev);
+        if (jsonTheme) {
+            const updatedTheme = { ...jsonTheme, transparency: !isTransparencyEnabled };
+            setJsonTheme(updatedTheme);
+            localStorage.setItem("theme", JSON.stringify(updatedTheme));
+        }
+    };
+
+
     return (
     <div>
         <TopBar />
@@ -21,11 +52,18 @@ export default function SettingsThemes() {
                                <hr/> 
                                <div>
                                     <div className="transparency-effects-container">
-                                        <p>Transparency effects</p>
+                                        <div className="transparency-effects-container-text">
+                                            <p>Transparency effects</p>
+                                            <p className="small-p"><small>(requires refresh)</small></p>
+                                        </div>
                                         <div className="transparency-effects-toggle-container">
                                             <p className="transparency-effects-toggle-text">On</p>
                                             <label className="transparency-effects-toggle-switch">
-                                                <input type="checkbox"/>
+                                                <input
+                                                    type="checkbox" 
+                                                    checked={isTransparencyEnabled}
+                                                    onChange={handleToggleTransparency}
+                                                />
                                                 <div className="transparency-effects-toggle-slider"></div>
                                                 <div className="transparency-effects-toggle-slider-card">
                                                     <div className="slider-card-face slider-card-front"></div>
