@@ -3,8 +3,12 @@ import TopBar from "../Topbar";
 import '../../style/Settings/Themes.scss';
 import { useEffect, useState } from "react";
 
+import redTheme from '../../style/themes/red.json';
+import blueTheme from '../../style/themes/blue.json';
+import pinkTheme from '../../style/themes/pink.json';
+import yellowTheme from '../../style/themes/pink.json';
 
-import { Style } from '../../Router';
+import { applyCssTheme, Style } from '../../Router';
 
 export default function SettingsThemes() {
 
@@ -32,7 +36,6 @@ export default function SettingsThemes() {
             localStorage.setItem("theme", JSON.stringify(updatedTheme));
         }
     };
-
 
     return (
     <div>
@@ -75,7 +78,7 @@ export default function SettingsThemes() {
                                     <hr/>
                                     <details>
                                         <summary>Accent Color</summary>
-                                        <p>accent colors</p>
+                                        <SelectableColorBox />
                                     </details>
                                     <hr/>
                                </div>
@@ -86,5 +89,66 @@ export default function SettingsThemes() {
             </div>
         </div>
     </div>
+    )
+}
+
+
+
+const SelectableColorBox = () => {
+    const colors = ['red', 'blue', 'pink', 'yellow'];
+
+    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+    const toggleSelection = (color: any) => {
+        const newColor: string | null = color === selectedColor ? null : color;
+
+        if (newColor !== null) {
+            setSelectedColor(newColor);
+
+    
+
+            switch (newColor) {
+                case "red": 
+                    const red_theme: Style = redTheme;
+                    console.log(red_theme);
+                    localStorage.setItem("theme", JSON.stringify(red_theme));
+                    break;
+                case "blue":
+                    const blue_theme: Style = blueTheme;
+                    console.log(blue_theme);
+                    localStorage.setItem("theme", JSON.stringify(blue_theme));
+                    break;
+                case "pink":
+                    //console.log(pinkTheme);
+                    break;
+                case "yellow":
+                    //console.log(yellowTheme);
+                    break;
+                default:
+                    console.log("unknown theme.");
+                    break;
+            }
+
+        }
+
+    };
+
+
+    return (
+    <div className="accent-color-container">
+        {colors.map((color) => (
+            <div 
+                key={color} 
+                className="accent-color"
+            >
+                <div
+                    className={`box ${selectedColor === color ? 'selected' : ''}`}
+                    onClick={() => toggleSelection(color)}
+                    style={{ backgroundColor: color }}
+                >
+                </div>
+            </div>
+        ))}
+     </div>
     )
 }

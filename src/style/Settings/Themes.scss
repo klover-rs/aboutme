@@ -103,3 +103,27 @@ input:checked ~ .transparency-effects-toggle-slider {
 .small-p {
     margin-top: -20px;
 }
+
+.box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+
+}
+
+.box.selected {
+    outline: 2px solid white; 
+    outline-offset: -5px;
+}
+
+.accent-color-container {
+    display: flex;
+    gap: 10px; /* Optional: Add spacing between boxes */
+    justify-content: center; /* Center the boxes horizontally */
+    align-items: center; /* Center the boxes vertically */
+    flex-wrap: wrap; /* Optional: Wrap boxes to the next line if there's not enough space */
+}

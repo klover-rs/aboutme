@@ -24,7 +24,7 @@ export interface Style {
     transparency_blur: string;
 }
 
-function applyCssTheme(jsonTheme: Style) {
+export function applyCssTheme(jsonTheme: Style) {
     document.documentElement.style.setProperty('--primary-color-text', jsonTheme.primary_color_text);
     document.documentElement.style.setProperty('--primary-color',jsonTheme.primary_color);
     document.documentElement.style.setProperty('--secondary-color', jsonTheme.secondary_color);
