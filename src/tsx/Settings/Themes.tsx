@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import redTheme from '../../style/themes/red.json';
 import blueTheme from '../../style/themes/blue.json';
 import pinkTheme from '../../style/themes/pink.json';
-import yellowTheme from '../../style/themes/pink.json';
+import yellowTheme from '../../style/themes/yellow.json';
 
 import { applyCssTheme, Style } from '../../Router';
 
@@ -77,7 +77,7 @@ export default function SettingsThemes() {
                                     </div>
                                     <hr/>
                                     <details>
-                                        <summary>Accent Color</summary>
+                                        <summary>Accent Color <small>(requires refresh)</small></summary>
                                         <SelectableColorBox />
                                     </details>
                                     <hr/>
@@ -119,10 +119,14 @@ const SelectableColorBox = () => {
                     localStorage.setItem("theme", JSON.stringify(blue_theme));
                     break;
                 case "pink":
-                    //console.log(pinkTheme);
+                    const pink_theme: Style = pinkTheme;
+                    console.log(pink_theme);
+                    localStorage.setItem("theme", JSON.stringify(pink_theme));
                     break;
                 case "yellow":
-                    //console.log(yellowTheme);
+                    const yellow_theme: Style = yellowTheme;
+                    console.log(yellow_theme);
+                    localStorage.setItem("theme", JSON.stringify(yellow_theme));
                     break;
                 default:
                     console.log("unknown theme.");
