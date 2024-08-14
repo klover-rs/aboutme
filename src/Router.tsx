@@ -13,6 +13,7 @@ export interface Style {
   secondary_color: string;
   background_color_primary: string;
   background_color_secondary: string;
+  background_color_tertiary: string;
 
   primary_grey: string;
   secondary_grey: string;
@@ -44,7 +45,11 @@ export function applyCssTheme(jsonTheme: Style) {
   document.documentElement.style.setProperty(
     "--background-color-secondary",
     jsonTheme.background_color_secondary
-  );
+  ); 
+  document.documentElement.style.setProperty(
+    "--background-color-tertiary",
+    jsonTheme.background_color_tertiary
+  )
   document.documentElement.style.setProperty(
     "--primary-grey",
     jsonTheme.primary_grey

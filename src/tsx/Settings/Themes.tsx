@@ -10,7 +10,7 @@ import yellowTheme from "../../style/themes/yellow.json";
 import purpleTheme from "../../style/themes/purple.json";
 import greenTheme from "../../style/themes/green.json";
 
-import { applyCssTheme, Style } from "../../Router";
+import { Style } from "../../Router";
 
 export default function SettingsThemes() {
   const [jsonTheme, setJsonTheme] = useState<Style | null>(null);
