@@ -1,158 +1,183 @@
 import { Link } from "react-router-dom";
 import TopBar from "../Topbar";
-import '../../style/Settings/Themes.scss';
+import "../../style/Settings/Themes.scss";
 import { useEffect, useState } from "react";
 
-import redTheme from '../../style/themes/red.json';
-import blueTheme from '../../style/themes/blue.json';
-import pinkTheme from '../../style/themes/pink.json';
-import yellowTheme from '../../style/themes/yellow.json';
+import redTheme from "../../style/themes/red.json";
+import blueTheme from "../../style/themes/blue.json";
+import pinkTheme from "../../style/themes/pink.json";
+import yellowTheme from "../../style/themes/yellow.json";
+import purpleTheme from "../../style/themes/purple.json";
+import greenTheme from "../../style/themes/green.json";
 
-import { applyCssTheme, Style } from '../../Router';
+import { applyCssTheme, Style } from "../../Router";
 
 export default function SettingsThemes() {
+  const [jsonTheme, setJsonTheme] = useState<Style | null>(null);
+  const [isTransparencyEnabled, setIsTransparencyEnabled] =
+    useState<boolean>(false);
 
-    const [jsonTheme, setJsonTheme] = useState<Style | null>(null); 
-    const [isTransparencyEnabled, setIsTransparencyEnabled] = useState<boolean>(false);
-    
-    useEffect(() => {
-        const storage = localStorage.getItem("theme");
+  useEffect(() => {
+    const storage = localStorage.getItem("theme");
 
-        if (storage) {
-            const jsonTheme_: Style = JSON.parse(storage);
+    if (storage) {
+      const jsonTheme_: Style = JSON.parse(storage);
 
-            setJsonTheme(jsonTheme_);
-            
-            setIsTransparencyEnabled(jsonTheme_.transparency);
-        }
-    }, []);
+      setJsonTheme(jsonTheme_);
 
-    
-    const handleToggleTransparency = () => {
-        setIsTransparencyEnabled((prev) => !prev);
-        if (jsonTheme) {
-            const updatedTheme = { ...jsonTheme, transparency: !isTransparencyEnabled };
-            setJsonTheme(updatedTheme);
-            localStorage.setItem("theme", JSON.stringify(updatedTheme));
-        }
-    };
+      setIsTransparencyEnabled(jsonTheme_.transparency);
+    }
+  }, []);
 
-    return (
+  const handleToggleTransparency = () => {
+    setIsTransparencyEnabled((prev) => !prev);
+    if (jsonTheme) {
+      const updatedTheme = {
+        ...jsonTheme,
+        transparency: !isTransparencyEnabled,
+      };
+      setJsonTheme(updatedTheme);
+      localStorage.setItem("theme", JSON.stringify(updatedTheme));
+    }
+  };
+
+  return (
     <div>
-        <TopBar />
-        <div className="container">
-            <div className="settings-container">
-                <div className="settings-container-inner">
-                    <div className="settings-navlink-container">
-                        <div className="settings-navlink">
-                            <Link to="/settings/themes">Themes</Link>
-                        </div>
-                    </div>
-                    <div className="settings-content">
-                        <div className="settings-themes-container">
-                            <div className="settings-themes-container-inner">
-                               <h2>Themes</h2>
-                               <hr/> 
-                               <div>
-                                    <div className="transparency-effects-container">
-                                        <div className="transparency-effects-container-text">
-                                            <p>Transparency effects</p>
-                                            <p className="small-p"><small>(requires refresh)</small></p>
-                                        </div>
-                                        <div className="transparency-effects-toggle-container">
-                                            <p className="transparency-effects-toggle-text">On</p>
-                                            <label className="transparency-effects-toggle-switch">
-                                                <input
-                                                    type="checkbox" 
-                                                    checked={isTransparencyEnabled}
-                                                    onChange={handleToggleTransparency}
-                                                />
-                                                <div className="transparency-effects-toggle-slider"></div>
-                                                <div className="transparency-effects-toggle-slider-card">
-                                                    <div className="slider-card-face slider-card-front"></div>
-                                                    <div className="slider-card-face slider-card-back"></div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                    <details>
-                                        <summary>Accent Color <small>(requires refresh)</small></summary>
-                                        <SelectableColorBox />
-                                    </details>
-                                    <hr/>
-                               </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <TopBar />
+      <div className="container">
+        <div className="settings-container">
+          <div className="settings-container-inner">
+            <div className="settings-navlink-container">
+              <div className="settings-navlink">
+                <Link to="/settings/themes">Themes</Link>
+              </div>
             </div>
+            <div className="settings-content">
+              <div className="settings-themes-container">
+                <div className="settings-themes-container-inner">
+                  <h2>Themes</h2>
+                  <hr />
+                  <div>
+                    <div className="transparency-effects-container">
+                      <div className="transparency-effects-container-text">
+                        <p>Transparency effects</p>
+                        <p className="small-p">
+                          <small>(requires refresh)</small>
+                        </p>
+                      </div>
+                      <div className="transparency-effects-toggle-container">
+                        <p className="transparency-effects-toggle-text">On</p>
+                        <label className="transparency-effects-toggle-switch">
+                          <input
+                            type="checkbox"
+                            checked={isTransparencyEnabled}
+                            onChange={handleToggleTransparency}
+                          />
+                          <div className="transparency-effects-toggle-slider"></div>
+                          <div className="transparency-effects-toggle-slider-card">
+                            <div className="slider-card-face slider-card-front"></div>
+                            <div className="slider-card-face slider-card-back"></div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <hr />
+                    <details>
+                      <summary>
+                        Accent Color <small>(requires refresh)</small>
+                      </summary>
+                      <SelectableColorBox />
+                    </details>
+                    <hr />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    )
+  );
 }
-
-
-
 const SelectableColorBox = () => {
-    const colors = ['red', 'blue', 'pink', 'yellow'];
+  const redColor = new Color("#ff2727", "Red");
+  const blueColor = new Color("#3737eb", "Blue");
+  const pinkColor = new Color("#ff00ee", "Pink");
+  const yellowColor = new Color("#f9f950", "Yellow");
+  const purpleColor = new Color("#59007f", "Purple");
+  const greenColor = new Color("#1cc61c", "Green");
+  const colors = [
+    redColor,
+    blueColor,
+    pinkColor,
+    yellowColor,
+    purpleColor,
+    greenColor,
+  ];
+  const [selectedColor, setSelectedColor] = useState<Color | null>(null);
 
-    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const red_theme: Style = redTheme;
+  const blue_theme: Style = blueTheme;
+  const pink_theme: Style = pinkTheme;
+  const yellow_theme: Style = yellowTheme;
+  const purple_theme: Style = purpleTheme;
+  const green_theme: Style = greenTheme;
+  const themes: { [key: string]: Style } = {
+    red: red_theme,
+    blue: blue_theme,
+    pink: pink_theme,
+    yellow: yellow_theme,
+    purple: purple_theme,
+    green: green_theme,
+  };
 
-    const toggleSelection = (color: any) => {
-        const newColor: string | null = color === selectedColor ? null : color;
+  const toggleSelection = (color: Color) => {
+    const newColor: Color | null = color === selectedColor ? null : color;
 
-        if (newColor !== null) {
-            setSelectedColor(newColor);
+    if (newColor !== null) {
+      setSelectedColor(newColor);
 
-    
+      const themeName = newColor.name.toLowerCase();
+      const selectedTheme = themes[themeName];
 
-            switch (newColor) {
-                case "red": 
-                    const red_theme: Style = redTheme;
-                    console.log(red_theme);
-                    localStorage.setItem("theme", JSON.stringify(red_theme));
-                    break;
-                case "blue":
-                    const blue_theme: Style = blueTheme;
-                    console.log(blue_theme);
-                    localStorage.setItem("theme", JSON.stringify(blue_theme));
-                    break;
-                case "pink":
-                    const pink_theme: Style = pinkTheme;
-                    console.log(pink_theme);
-                    localStorage.setItem("theme", JSON.stringify(pink_theme));
-                    break;
-                case "yellow":
-                    const yellow_theme: Style = yellowTheme;
-                    console.log(yellow_theme);
-                    localStorage.setItem("theme", JSON.stringify(yellow_theme));
-                    break;
-                default:
-                    console.log("unknown theme.");
-                    break;
-            }
+      if (selectedTheme) {
+        console.log(selectedTheme);
+        localStorage.setItem("theme", JSON.stringify(selectedTheme));
+        window.location.reload();
+      } else {
+        console.log("Unknown theme.");
+      }
+    }
+  };
 
-        }
-
-    };
-
-
-    return (
+  return (
     <div className="accent-color-container">
-        {colors.map((color) => (
-            <div 
-                key={color} 
-                className="accent-color"
-            >
-                <div
-                    className={`box ${selectedColor === color ? 'selected' : ''}`}
-                    onClick={() => toggleSelection(color)}
-                    style={{ backgroundColor: color }}
-                >
-                </div>
-            </div>
-        ))}
-     </div>
-    )
+      {colors.map((color) => (
+        <div key={color.name} className="accent-color">
+          <div
+            className={`box ${selectedColor === color ? "selected" : ""}`}
+            onClick={() => toggleSelection(color)}
+            style={{ backgroundColor: color.color }}
+            title={color.name}
+          ></div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+class Color {
+  color: string;
+  name: string;
+
+  constructor(color: string, name: string) {
+    this.color = color;
+    this.name = name;
+  }
+  setName(name: string) {
+    this.name = name;
+  }
+  setColor(color: string) {
+    this.color = color;
+  }
 }
