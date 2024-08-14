@@ -108,6 +108,7 @@ input:checked ~ .transparency-effects-toggle-slider {
   justify-content: center;
   cursor: pointer;
   user-select: none;
+  border: 1px solid var(--primary-text-color);
 }
 
 .box.selected {

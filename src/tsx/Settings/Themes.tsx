@@ -9,6 +9,7 @@ import pinkTheme from "../../style/themes/pink.json";
 import yellowTheme from "../../style/themes/yellow.json";
 import purpleTheme from "../../style/themes/purple.json";
 import greenTheme from "../../style/themes/green.json";
+import oledTheme from "../../style/themes/oled.json";
 
 import { Style } from "../../Router";
 
@@ -106,6 +107,7 @@ const SelectableColorBox = () => {
   const yellowColor = new Color("#f9f950", "Yellow");
   const purpleColor = new Color("#59007f", "Purple");
   const greenColor = new Color("#1cc61c", "Green");
+  const blackColor = new Color("#000000", "Black");
   const colors = [
     redColor,
     blueColor,
@@ -113,6 +115,7 @@ const SelectableColorBox = () => {
     yellowColor,
     purpleColor,
     greenColor,
+    blackColor
   ];
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
 
@@ -122,6 +125,7 @@ const SelectableColorBox = () => {
   const yellow_theme: Style = yellowTheme;
   const purple_theme: Style = purpleTheme;
   const green_theme: Style = greenTheme;
+  const oled_theme: Style = oledTheme;
   const themes: { [key: string]: Style } = {
     red: red_theme,
     blue: blue_theme,
@@ -129,6 +133,7 @@ const SelectableColorBox = () => {
     yellow: yellow_theme,
     purple: purple_theme,
     green: green_theme,
+    black: oled_theme
   };
 
   const toggleSelection = (color: Color) => {
