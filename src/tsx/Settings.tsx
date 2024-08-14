@@ -14,7 +14,9 @@ export default function Settings() {
                 <Link to="/settings/themes">Themes</Link>
               </div>
             </div>
-            <div className="settings-content"></div>
+            <div className="settings-content">
+              
+            </div>
           </div>
         </div>
       </div>
